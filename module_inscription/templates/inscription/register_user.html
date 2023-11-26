@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+
+{% block titre %}
+    Inscription | Enregistrement
+{% endblock  %}
+
+
+{% block content %}
+
+    {% if form.errors %}
+        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+            <p> Il y a une erreur avec votre formulaire... </p>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        
+    {% endif %}
+
+    <div class="shadow p-4 mb-5 bg-body rounded">
+        <h1 class="display-3" > Veuillez-vous enrégistrer ici.  </h1>
+
+        <form action="" method="post" >
+            {% csrf_token %}
+            {{form.as_p}} <br>
+            <input class="btn btn-secondary" type="submit" value="Envoyer">
+        </form>
+    </div>
+
+    
+
+    
+
+{% endblock  %}
+    
+    

@@ -9,8 +9,31 @@
           <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="{% url 'home' '2023' 'November' %} ">Fais-le</a>
           </li>
+          {% if user.is_authenticated %}
+            {% comment %} lien pour login {% endcomment %}
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="{% url 'logout'  %} ">Deconnexion</a>
+            </li> 
+
+            {% comment %} Add Post {% endcomment %}
+
+            
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="{% url 'add_post'  %} ">Créer Un Post</a>
+            </li>
+         
+          {% else %}
+            
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="{% url 'register_user'  %} ">S'enregistrer</a>
+            </li>
+            {% comment %} lien pour login {% endcomment %}
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="{% url 'login'  %} ">Connexion</a>
+            </li> 
+          {% endif %}
+
           
-           
           
         </ul>
         <form class="d-flex" role="search">

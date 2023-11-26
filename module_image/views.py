@@ -3,11 +3,37 @@ from django.http import HttpResponse
 import calendar
 from calendar import HTMLCalendar
 from datetime import datetime
+from .forms import PostForm
+from django.http import HttpResponseRedirect
+
+
 
 
 
 
 # Create your views here.
+def add_post(request):
+    submitted=False
+    if request.method == "POST":
+        form=PostForm(request.POST, request.FILES)
+        if form.is_valid():
+            
+            form.save()
+            
+            return HttpResponseRedirect('/add_post?submitted=True')
+    else:
+        form=PostForm   
+        if 'submitted' in request.GET:
+            submitted=True
+        
+    
+    return render(request,'module_image/add_post.html', {'form':form, 'submitted':submitted})  
+
+
+
+
+
+
 def home(request, year=datetime.now().year, month=datetime.now().strftime('%B')):
     # conversion du mois du nom au numero
     month=month.title()

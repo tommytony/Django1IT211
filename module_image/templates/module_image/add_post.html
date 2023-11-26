@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+
+{% block titre %}
+    Ajout D'un Post
+{% endblock  %}
+
+
+{% block content %}
+    
+    {% if user.is_authenticated  %}
+    
+        <h1 class="display-3" > Ajouter D'un Post'.  </h1>
+        <br>  <br>
+        {%if submitted %}
+            Votre Post Est Bien Enrégistrer!!!
+        {%else %}
+            <form action="  " method=POST enctype="multipart/form-data" >
+                {% csrf_token %}
+
+                {{ form.as_p }}
+
+                <input type="submit" value="Submit" class="btn btn-success" />
+
+            </form>
+        {% endif %}
+    {% else %}
+        <h1 class="display-3" > Vous n'êtes pas un créateur.  </h1>
+    {% endif %}
+
+{% endblock  %}
+    
+    
