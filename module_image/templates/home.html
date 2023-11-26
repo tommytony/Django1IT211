@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+
+{% block titre %}
+    Acceuil
+{% endblock  %}
+
+
+{% block content %}
+    <h1 class="display-3" > Bienvenu Sur La Page Association Des Photographes.  </h1>
+
+    <center>
+        <h1> Calendier du mois de {{month}} de l'année {{year}} </h1>
+        <h1 class="display-6" >Today le {{current_day}} {{month}} de l'année {{current_year}} et il est {{time}} </h1>
+
+         
+        {{cal | safe}}
+        <br> <br>  <br>
+        Copyright (c) {{current_year}}
+
+    </center>
+
+{% endblock  %}
+    
+    
